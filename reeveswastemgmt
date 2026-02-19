@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigChange | John Reeves Waste Management ROI Case</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bc-blue: #111827;
+            --bc-orange: #f97316;
+            --bc-gray: #f3f4f6;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--bc-blue);
+            background-color: white;
+        }
+        .bc-gradient {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        .btn-primary {
+            background-color: var(--bc-orange);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #ea580c;
+            transform: translateY(-1px);
+        }
+        input[type="range"] {
+            accent-color: var(--bc-orange);
+        }
+        .metric-card {
+            border-left: 4px solid var(--bc-orange);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <img src="https://www.bigchange.com/wp-content/uploads/2022/01/BigChange-Logo.svg" alt="BigChange" class="h-8">
+            <div class="flex items-center gap-4">
+                <span class="text-sm font-medium text-gray-500">Prepared for:</span>
+                <img src="data:image/webp;base64,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" alt="John Reeves Waste Management" class="h-10">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bc-gradient text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">Transforming John Reeves Waste Management</h1>
+            <p class="text-xl text-gray-300 mb-8">From a 1999 Database to a Modern, Digital-First Waste Operation.</p>
+            <div class="flex justify-center gap-4">
+                <a href="#demo" class="btn-primary">Watch Meeting Recording</a>
+                <a href="#calculator" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition">View ROI Calculator</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="demo" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Our Post-Demo Catch-up</h2>
+            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
+                <!-- Using the link provided by user -->
+                <iframe src="https://copilot.clari.com/call/0af58dd2-174e-4346-bf2a-24d87d41d724" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Business Case -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-center">The Business Case</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-8">
+                    <div class="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Eliminating Paper & Duplication</h3>
+                    <p class="text-gray-600">Erica, you mentioned being "surrounded by paper every day." By digitizing your waste transfer notes and septic tank job sheets, you eliminate the need to manually enter data into spreadsheets at the end of the month.</p>
+                </div>
+
+                <div class="card p-8">
+                    <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Seamless Sage 50 Integration</h3>
+                    <p class="text-gray-600">No more double-keying. BigChange is a Platinum Partner with Sage. Once a job is completed on the tablet, the invoice can pass directly into your Sage Ledger, saving hours of office admin every week.</p>
+                </div>
+
+                <div class="card p-8">
+                    <div class="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Real-Time Waste Compliance</h3>
+                    <p class="text-gray-600">With the EA moving toward digital waste movements in October, BigChange ensures you are compliant. Your drivers produce the waste transfer note on-site, instantly synced to the back office.</p>
+                </div>
+
+                <div class="card p-8">
+                    <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Vehicle Tracking & Daily Checks</h3>
+                    <p class="text-gray-600">Move your HGV daily checks from paper to the tablet. Drivers cannot start their first job until the safety check is completed, ensuring your fleet is always compliant and maintained.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Success Metrics</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="metric-card bg-gray-50 p-6 rounded-xl text-left">
+                    <span class="text-4xl font-bold text-orange-600 mb-2 block">10+ Hours</span>
+                    <p class="font-semibold text-lg">Saved in Office Admin</p>
+                    <p class="text-sm text-gray-500">By removing double entry into spreadsheets and Sage 50.</p>
+                </div>
+                <div class="metric-card bg-gray-50 p-6 rounded-xl text-left">
+                    <span class="text-4xl font-bold text-orange-600 mb-2 block">100%</span>
+                    <p class="font-semibold text-lg">Digital Compliance</p>
+                    <p class="text-sm text-gray-500">Real-time waste transfer notes ready for EA October regulations.</p>
+                </div>
+                <div class="metric-card bg-gray-50 p-6 rounded-xl text-left">
+                    <span class="text-4xl font-bold text-orange-600 mb-2 block">25%</span>
+                    <p class="font-semibold text-lg">Reduction in Chasing</p>
+                    <p class="text-sm text-gray-500">Automated payment reminders for your cash and account customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Savings Calculator -->
+    <section id="calculator" class="py-20 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4 text-center">ROI Calculator</h2>
+            <p class="text-center text-gray-600 mb-12 text-xl">See how BigChange impacts John Reeves Waste Management's bottom line.</p>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="card p-8 space-y-8">
+                    <div>
+                        <div class="flex justify-between mb-4">
+                            <label class="font-bold">Field Engineers (Drivers)</label>
+                            <span id="engineersVal" class="text-orange-600 font-bold">2</span>
+                        </div>
+                        <input type="range" id="engineersInput" min="1" max="50" value="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-4">
+                            <label class="font-bold">Jobs per Day (per Driver)</label>
+                            <span id="jobsVal" class="text-orange-600 font-bold">4</span>
+                        </div>
+                        <input type="range" id="jobsPerDayInput" min="1" max="15" value="4" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-4">
+                            <label class="font-bold">Office Staff</label>
+                            <span id="officeVal" class="text-orange-600 font-bold">1</span>
+                        </div>
+                        <input type="range" id="officeStaffInput" min="1" max="10" value="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between mb-4">
+                            <label class="font-bold">Office Staff Avg. Salary (£)</label>
+                            <span id="salaryVal" class="text-orange-600 font-bold">£28,000</span>
+                        </div>
+                        <input type="range" id="officeSalaryInput" min="20000" max="60000" step="1000" value="28000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="card bc-gradient text-white p-8">
+                    <h3 class="text-2xl font-bold mb-8">Estimated Annual Value</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <span>Total Annual Savings</span>
+                            <span id="totalSavings" class="text-4xl font-bold text-orange-500">£12,450</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Office Admin</p>
+                                <p id="adminSavings" class="text-xl font-bold">£4,200</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Fuel & Drive Time</p>
+                                <p id="fuelSavings" class="text-xl font-bold">£3,150</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Revenue Boost</p>
+                                <p id="revenueSavings" class="text-xl font-bold">£5,100</p>
+                            </div>
+                            <div class="bg-white/5 p-4 rounded-lg">
+                                <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Compliance Peace</p>
+                                <p class="text-xl font-bold">Priceless</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 card p-8">
+                <h3 class="text-xl font-bold mb-4">Key Assumptions</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-600">
+                    <ul class="list-disc ml-4 space-y-2">
+                        <li><strong>Drive Time:</strong> 11% reduction through optimized scheduling and route mapping.</li>
+                        <li><strong>Admin Efficiency:</strong> 25% reduction in manual data entry and invoice chasing.</li>
+                        <li><strong>Sage Integration:</strong> 1 hour per day saved in manual financial duplication.</li>
+                    </ul>
+                    <ul class="list-disc ml-4 space-y-2">
+                        <li><strong>Revenue:</strong> Opportunity for 1 extra job per week through smarter list management.</li>
+                        <li><strong>Compliance:</strong> Zero paper waste notes and automated EA reporting.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-sm text-gray-500">
+                <p><strong>Calculation Breakdown:</strong> Savings are calculated based on typical waste management efficiency gains (Admin: 20-30%, Route: 10-15%) across 240 working days per year.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">Next Steps</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <div class="bg-orange-50 p-8 rounded-2xl border-2 border-orange-100">
+                    <h3 class="text-xl font-bold mb-4">1. Technical Deep Dive</h3>
+                    <p class="text-gray-600 mb-4">Join a session with <strong>Roger Quinn</strong>, our Waste Specialist. He will show you the exact setup for septic tank job cards and automated waste return reporting.</p>
+                    <button class="btn-primary w-full">Schedule with Roger</button>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl border-2 border-gray-100">
+                    <h3 class="text-xl font-bold mb-4">2. Sage 50 Review</h3>
+                    <p class="text-gray-600 mb-4">Brief 15-minute review to confirm your specific Sage 50 setup and how we will map your John Reeves chart of accounts.</p>
+                    <button class="bg-white border-2 border-gray-200 px-6 py-3 rounded-lg font-bold w-full hover:bg-gray-100 transition">Book Technical Chat</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <img src="https://www.bigchange.com/wp-content/uploads/2022/01/BigChange-Logo-White.svg" alt="BigChange" class="h-6 mb-4 mx-auto md:mx-0">
+                <p class="text-gray-400 text-sm">© 2026 BigChange. All rights reserved.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-white">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const engineersInput = document.getElementById('engineersInput');
+        const jobsPerDayInput = document.getElementById('jobsPerDayInput');
+        const officeStaffInput = document.getElementById('officeStaffInput');
+        const officeSalaryInput = document.getElementById('officeSalaryInput');
+
+        const engineersVal = document.getElementById('engineersVal');
+        const jobsVal = document.getElementById('jobsVal');
+        const officeVal = document.getElementById('officeVal');
+        const salaryVal = document.getElementById('salaryVal');
+
+        const totalSavings = document.getElementById('totalSavings');
+        const adminSavings = document.getElementById('adminSavings');
+        const fuelSavings = document.getElementById('fuelSavings');
+        const revenueSavings = document.getElementById('revenueSavings');
+
+        function updateCalculator() {
+            const engineers = parseInt(engineersInput.value);
+            const jobsPerDay = parseInt(jobsPerDayInput.value);
+            const officeStaff = parseInt(officeStaffInput.value);
+            const salary = parseInt(officeSalaryInput.value);
+
+            // Update display labels
+            engineersVal.textContent = engineers;
+            jobsVal.textContent = jobsPerDay;
+            officeVal.textContent = officeStaff;
+            salaryVal.textContent = '£' + salary.toLocaleString();
+
+            // ROI Logic
+            // Savings from office staff efficiency (approx 20% time saved per staff member)
+            const adminSaved = (officeStaff * salary * 0.20);
+            
+            // Savings from fuel/drive time (approx £1500 per vehicle/year based on 11% reduction)
+            const fuelSaved = (engineers * 1500);
+
+            // Revenue boost from 1 extra job per week per driver (assume £150 per job profit * 48 weeks)
+            const revenueSaved = (engineers * 150 * 48 * 0.1); // Scaled for conservatism
+
+            const total = adminSaved + fuelSaved + revenueSaved;
+
+            adminSavings.textContent = '£' + Math.round(adminSaved).toLocaleString();
+            fuelSavings.textContent = '£' + Math.round(fuelSaved).toLocaleString();
+            revenueSavings.textContent = '£' + Math.round(revenueSaved).toLocaleString();
+            totalSavings.textContent = '£' + Math.round(total).toLocaleString();
+        }
+
+        engineersInput.addEventListener('input', updateCalculator);
+        jobsPerDayInput.addEventListener('input', updateCalculator);
+        officeStaffInput.addEventListener('input', updateCalculator);
+        officeSalaryInput.addEventListener('input', updateCalculator);
+
+        // Initial run
+        updateCalculator();
+    </script>
+</body>
+</html>
