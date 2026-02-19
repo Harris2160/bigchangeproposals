@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigChange | John Reeves Waste Management ROI Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bc-blue: #111827;
+            --bc-orange: #f97316;
+            --bc-gray: #f3f4f6;
+        }
+        body { font-family: 'Outfit', sans-serif; color: var(--bc-blue); }
+        .bc-gradient { background: linear-gradient(135deg, #111827 0%, #1f2937 100%); }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e5e7eb; }
+        .btn-primary { background-color: var(--bc-orange); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s; display: inline-block; text-align: center; }
+        .btn-primary:hover { background-color: #ea580c; transform: translateY(-1px); }
+        input[type="range"] { accent-color: var(--bc-orange); width: 100%; }
+        .metric-card { border-left: 4px solid var(--bc-orange); padding: 1.5rem; background: #f9fafb; border-radius: 0 0.75rem 0.75rem 0; }
+        
+        /* Donut Chart Styling */
+        .donut-container { position: relative; width: 200px; height: 200px; margin: 0 auto; }
+        .donut-ring { fill: transparent; stroke: #e5e7eb; stroke-width: 20; }
+        .donut-segment { fill: transparent; stroke-width: 20; transition: stroke-dasharray 0.3s ease; }
+        #donutEngineers { stroke: var(--bc-orange); }
+        #donutOffice { stroke: #3b82f6; }
+        #donutFuel { stroke: #10b981; }
+        .donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <img src="https://www.bigchange.com/wp-content/uploads/2022/01/BigChange-Logo.svg" alt="BigChange" class="h-10 block" onerror="this.src='https://placehold.co/200x50?text=BigChange'">
+            <div class="flex items-center gap-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Prepared for:</span>
+                <div class="flex items-center gap-3">
+                    <img src="data:image/webp;base64,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 (John Reeves Waste Management)" class="h-10 block rounded shadow-sm">
+                    <span class="font-bold text-gray-800">John Reeves Waste Management</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bc-gradient text-white py-24">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h1 class="text-6xl font-bold mb-8 leading-tight">Eliminating Paper Pains for John Reeves Waste Management</h1>
+            <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto">Moving from a 1999 legacy database to a digital-first waste management operation. Automating compliance, streamlining Sage 50, and reclaiming your office space.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://copilot.clari.com/call/0af58dd2-174e-4346-bf2a-24d87d41d724" target="_blank" class="btn-primary text-lg px-10">Watch Meeting Recording</a>
+                <a href="#calculator" class="bg-white/10 hover:bg-white/20 px-10 py-4 rounded-lg font-bold transition backdrop-blur-sm border border-white/20">View Savings Calculator</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Business Case -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold mb-4">The Business Case</h2>
+                <div class="h-1.5 w-24 bg-orange-500 rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="card p-10 flex gap-6 hover:shadow-xl transition-shadow border-l-8 border-l-orange-500">
+                    <div class="flex-shrink-0 bg-orange-50 p-4 rounded-xl h-fit">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Ending the Paper Jungle</h3>
+                        <p class="text-gray-600 leading-relaxed">Erica, you mentioned being "surrounded by paper every day." By digitizing your Waste Transfer Notes and Septic Tank job sheets, you remove the monthly burden of manual spreadsheet data entry.</p>
+                    </div>
+                </div>
+
+                <div class="card p-10 flex gap-6 hover:shadow-xl transition-shadow border-l-8 border-l-blue-500">
+                    <div class="flex-shrink-0 bg-blue-50 p-4 rounded-xl h-fit">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Live Sage 50 Integration</h3>
+                        <p class="text-gray-600 leading-relaxed">Eliminate double-keying. BigChange is a Platinum Partner with Sage. Once a job is finished on the driver's tablet, the financial data flows directly into your Ledger, reducing office admin hours by 25%.</p>
+                    </div>
+                </div>
+
+                <div class="card p-10 flex gap-6 hover:shadow-xl transition-shadow border-l-8 border-l-green-500">
+                    <div class="flex-shrink-0 bg-green-50 p-4 rounded-xl h-fit">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Compliance Guardrails</h3>
+                        <p class="text-gray-600 leading-relaxed">Ensure all Waste Transfer Notes are water-tight for the EA moving digital in October. Drivers capture signatures and before/after photos on-site, syncing instantly to the back office.</p>
+                    </div>
+                </div>
+
+                <div class="card p-10 flex gap-6 hover:shadow-xl transition-shadow border-l-8 border-l-purple-500">
+                    <div class="flex-shrink-0 bg-purple-50 p-4 rounded-xl h-fit">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Smart Scheduling & Tracking</h3>
+                        <p class="text-gray-600 leading-relaxed">Get a bird's eye view of your 2 tankers. Use the scheduler to cherry-pick routes based on tanker capacity and distance, reducing "dead mileage" and idling time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Success Metrics</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="metric-card shadow-sm">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">12+ Hours</div>
+                    <div class="text-lg font-bold mb-2">Monthly Admin Reclaimed</div>
+                    <p class="text-gray-500 text-sm">By removing manual database entry and paper filing for Waste Transfer Notes.</p>
+                </div>
+                <div class="metric-card shadow-sm">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">100%</div>
+                    <div class="text-lg font-bold mb-2">Digital Compliance</div>
+                    <p class="text-gray-500 text-sm">Every job is timestamped, GPS-located, and signed digitally for EA audits.</p>
+                </div>
+                <div class="metric-card shadow-sm">
+                    <div class="text-4xl font-bold text-orange-600 mb-2">11%</div>
+                    <div class="text-lg font-bold mb-2">Dead-Mileage Reduction</div>
+                    <p class="text-gray-500 text-sm">Optimized routing for tankers ensures they spend more time on the job and less on the road.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Savings Calculator -->
+    <section id="calculator" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-6">Savings Calculator</h2>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">Visualize the impact of BigChange on John Reeves Waste Management's bottom line.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Inputs -->
+                <div class="lg:col-span-2 space-y-10">
+                    <div class="card p-8 bg-gray-50">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <label class="font-bold text-gray-700">Field Engineers (Tanker Drivers)</label>
+                                    <span id="engineersVal" class="text-orange-600 font-bold">2</span>
+                                </div>
+                                <input type="range" id="engineersInput" min="1" max="10" value="2">
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <label class="font-bold text-gray-700">Jobs per Day</label>
+                                    <span id="jobsVal" class="text-orange-600 font-bold">4</span>
+                                </div>
+                                <input type="range" id="jobsPerDayInput" min="1" max="15" value="4">
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <label class="font-bold text-gray-700">Office Staff</label>
+                                    <span id="officeVal" class="text-orange-600 font-bold">1</span>
+                                </div>
+                                <input type="range" id="officeStaffInput" min="1" max="5" value="1">
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <label class="font-bold text-gray-700">Office Staff Salary (£)</label>
+                                    <span id="salaryVal" class="text-orange-600 font-bold">£28,000</span>
+                                </div>
+                                <input type="range" id="officeSalaryInput" min="20000" max="50000" step="1000" value="28000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-8">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"></path></svg>
+                            Key Assumptions
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-500">
+                            <ul class="space-y-3">
+                                <li class="flex gap-2"><strong>•</strong> <span>11% less drive time through mapping optimization.</span></li>
+                                <li class="flex gap-2"><strong>•</strong> <span>25% reduction in admin processing time per job.</span></li>
+                            </ul>
+                            <ul class="space-y-3">
+                                <li class="flex gap-2"><strong>•</strong> <span>Zero manual double-keying into Sage 50.</span></li>
+                                <li class="flex gap-2"><strong>•</strong> <span>Automatic generation ofEA-compliant returns.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results/Donut -->
+                <div class="bc-gradient rounded-3xl p-10 text-white flex flex-col items-center justify-between text-center h-fit sticky top-24">
+                    <h3 class="text-xl font-bold mb-2">Total Annual Saving</h3>
+                    <div id="totalSavings" class="text-5xl font-bold text-orange-500 mb-10">£0</div>
+                    
+                    <div class="donut-container mb-10">
+                        <svg viewBox="0 0 100 100" class="w-full h-full transform -rotate-90">
+                            <circle class="donut-ring" cx="50" cy="50" r="40"></circle>
+                            <circle id="donutEngineers" class="donut-segment" cx="50" cy="50" r="40" stroke-dasharray="0 251.2"></circle>
+                            <circle id="donutOffice" class="donut-segment" cx="50" cy="50" r="40" stroke-dasharray="0 251.2"></circle>
+                            <circle id="donutFuel" class="donut-segment" cx="50" cy="50" r="40" stroke-dasharray="0 251.2"></circle>
+                        </svg>
+                        <div class="donut-center">
+                            <div class="text-xs uppercase text-gray-400">ROI</div>
+                            <div class="text-xl font-bold">100%</div>
+                        </div>
+                    </div>
+
+                    <div class="w-full space-y-4 text-sm">
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-orange-500"></div>
+                                <span>Drive Time / Capacity</span>
+                            </div>
+                            <span id="engineersSaving" class="font-bold">£0</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                                <span>Office Admin (Sage/EA)</span>
+                            </div>
+                            <span id="officeSaving" class="font-bold">£0</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                <span>Paper & Fuel reduction</span>
+                            </div>
+                            <span id="fuelSaving" class="font-bold">£0</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-xs text-gray-400 italic">
+                        Calculation Breakdown: Savings based on 240 work days and industry standard efficiency gains.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16 text-center">Your Next Steps</h2>
+            <div class="space-y-8">
+                <div class="card p-8 flex flex-col md:flex-row gap-10 items-center">
+                    <div class="bg-orange-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">1</div>
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Technical Deep Dive with Rodger Quinn</h3>
+                        <p class="text-gray-600 mb-6">Our Waste Industry Specialist will join to show exactly how we build your custom Waste Transfer Notes and Septic Tank job cards.</p>
+                        <a href="mailto:harris.tariq@bigchange.com?subject=Technical Deep Dive" class="btn-primary">Book Deep Dive Session</a>
+                    </div>
+                </div>
+                <div class="card p-8 flex flex-col md:flex-row gap-10 items-center">
+                    <div class="bg-blue-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">2</div>
+                    <div class="flex-grow">
+                        <h3 class="text-2xl font-bold mb-2">Sage 50 Integration Verification</h3>
+                        <p class="text-gray-600 mb-6">A 15-minute verification call to ensure our Sage Platinum connector is mapped correctly to your current chart of accounts.</p>
+                        <a href="#" class="inline-block font-bold text-blue-600 hover:text-blue-800 transition">View Integration Docs →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Digitise John Reeves?</h2>
+                <a href="mailto:harris.tariq@bigchange.com" class="btn-primary text-xl px-16 py-5 rounded-full shadow-2xl hover:shadow-orange-200">Yes, Start My Transformation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div>
+                <img src="https://www.bigchange.com/wp-content/uploads/2022/01/BigChange-Logo-White.svg" alt="BigChange" class="h-8 mb-6">
+                <p class="text-gray-500">Helping John Reeves Waste Management win more work,<br>streamline operations, and eliminate paper since 2026.</p>
+            </div>
+            <div class="text-center md:text-right text-sm text-gray-500">
+                <p class="mb-4">Designed specifically for John Reeves Waste Management</p>
+                <div class="flex gap-6 justify-center md:justify-end">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Security</a>
+                    <a href="#" class="hover:text-white transition">BigChange.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ROI Calculator Logic
+        const engineersInput = document.getElementById('engineersInput');
+        const jobsPerDayInput = document.getElementById('jobsPerDayInput');
+        const officeStaffInput = document.getElementById('officeStaffInput');
+        const officeSalaryInput = document.getElementById('officeSalaryInput');
+
+        const engineersVal = document.getElementById('engineersVal');
+        const jobsVal = document.getElementById('jobsVal');
+        const officeVal = document.getElementById('officeVal');
+        const salaryVal = document.getElementById('salaryVal');
+
+        const totalSavings = document.getElementById('totalSavings');
+        const engineersSavingDisp = document.getElementById('engineersSaving');
+        const officeSavingDisp = document.getElementById('officeSaving');
+        const fuelSavingDisp = document.getElementById('fuelSaving');
+
+        // Donut Segments
+        const donutEngineers = document.getElementById('donutEngineers');
+        const donutOffice = document.getElementById('donutOffice');
+        const donutFuel = document.getElementById('donutFuel');
+        const circumference = 2 * Math.PI * 40;
+
+        function updateCalculator() {
+            const engineers = parseInt(engineersInput.value);
+            const jobsPerDay = parseInt(jobsPerDayInput.value);
+            const officeStaff = parseInt(officeStaffInput.value);
+            const salary = parseInt(officeSalaryInput.value);
+
+            // Labels
+            engineersVal.textContent = engineers;
+            jobsVal.textContent = jobsPerDay;
+            officeVal.textContent = officeStaff;
+            salaryVal.textContent = '£' + salary.toLocaleString();
+
+            // Calculation Logic
+            // 11% less drive time savings
+            const engSaving = (engineers * jobsPerDay * 240 * 15 * 0.11); 
+            // 25% Office efficiency
+            const offSaving = (officeStaff * salary * 0.25);
+            // Fuel and paper reduction
+            const fuelSaving = (engineers * 2200);
+
+            const total = engSaving + offSaving + fuelSaving;
+
+            // Display
+            totalSavings.textContent = '£' + Math.round(total).toLocaleString();
+            engineersSavingDisp.textContent = '£' + Math.round(engSaving).toLocaleString();
+            officeSavingDisp.textContent = '£' + Math.round(offSaving).toLocaleString();
+            fuelSavingDisp.textContent = '£' + Math.round(fuelSaving).toLocaleString();
+
+            // Donut Chart Update
+            const engPct = engSaving / total;
+            const offPct = offSaving / total;
+            const fuelPct = fuelSaving / total;
+
+            const engDash = engPct * circumference;
+            donutEngineers.style.strokeDasharray = `${engDash} ${circumference}`;
+
+            const offDash = offPct * circumference;
+            donutOffice.style.strokeDasharray = `${offDash} ${circumference}`;
+            donutOffice.style.strokeDashoffset = -engDash;
+
+            const fuelDash = fuelPct * circumference;
+            donutFuel.style.strokeDasharray = `${fuelDash} ${circumference}`;
+            donutFuel.style.strokeDashoffset = -(engDash + offDash);
+        }
+
+        engineersInput.addEventListener('input', updateCalculator);
+        jobsPerDayInput.addEventListener('input', updateCalculator);
+        officeStaffInput.addEventListener('input', updateCalculator);
+        officeSalaryInput.addEventListener('input', updateCalculator);
+
+        // Initial update
+        updateCalculator();
+    </script>
+</body>
+</html>
